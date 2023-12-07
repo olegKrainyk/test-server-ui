@@ -24,3 +24,18 @@
   cursor: pointer;
   display: inline-block;
 }
+
+.account-name {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 40px;
+}
+
+.failed-to-login {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 40px;
+  color: rgb(83, 30, 30);
+}

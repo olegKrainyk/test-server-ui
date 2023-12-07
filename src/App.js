@@ -6,6 +6,7 @@ export default function App(){
 
 const [info, setInfo] = useState('');
 const [login, setLogin] = useState('');
+const [account, setAccount] = useState({username: '', admin: false});
 
 const handleLoginChange = (e) => {
   setLogin(e.target.value);
@@ -25,11 +26,14 @@ const handleClick = () => {
 }
 
 const loginHandleClick = () => {
-  console.log(login);
 
-  axios.post(`http://10.241.104.202:8080/login`, {data: login})
+  axios.get(`http://10.241.104.202:8080/login`, {params: {login: login}})
         .then(response => {
-            console.log(response);
+            if(response.data === login) {
+              setAccount({name: response.data, admin: true});
+            } else {
+              setAccount({name: '', admin: false});
+            }
         })
         .catch(error => {
             console.error('There was an error!', error);
@@ -45,6 +49,8 @@ const loginHandleClick = () => {
       <input placeholder="Login" value={login} onChange={handleLoginChange} className='login'></input>
 
       <div className='login-btn' onClick={loginHandleClick}>Login me</div>
+
+      <div className={account.name !== '' ? 'account-name' : 'failed-to-login'}>{account.name !== '' ? account.name : 'Failed to login'}</div> 
     </div>
   );
 }
