@@ -1,3 +1,15 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.check-connection {
+  font-size: 25px;
+}
+
 .get-info-btn {
   padding: 30px;
   border: 3px solid black;
@@ -7,35 +19,55 @@
 
 .info-text {
   display: inline-block;
-  margin-left: 50px;
   color: red;
 }
 
-.login {
-  padding: 20px;
-  border: 3px solid black;
-  font-size: 20px;
-  margin: 30px;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  height: 30vh;
+}
+
+.login, .pass {
+  padding: 30px 5px;
+  border: none;
+  font-size: 65px;
+  width: 75%;
+  outline: none;
+  border-bottom: 8px solid white;
+  background-color: black;
+  color: white;
+  outline-color: transparent;
+  outline-width: 0px;
+  font-family: 'Nova Square', sans-serif;
+}
+
+.login::placeholder, .pass::placeholder {
+  color: white;
 }
 
 .login-btn {
-  padding: 10px;
-  border: 1px solid black;
   cursor: pointer;
-  display: inline-block;
+  width: auto;
+  font-size: 55px;
+  padding: 20px 60px;
+  border: 2px solid white;
+}
+
+.account-name, .failed-to-login{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
 }
 
 .account-name {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  font-size: 40px;
+  color: rgb(102, 157, 102);
 }
 
 .failed-to-login {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  font-size: 40px;
-  color: rgb(83, 30, 30);
+  color: rgb(135, 41, 41);
 }
