@@ -1,73 +1,9 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
   height: 100vh;
-}
-
-.check-connection {
-  font-size: 25px;
-}
-
-.get-info-btn {
-  padding: 30px;
-  border: 3px solid black;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.info-text {
-  display: inline-block;
-  color: red;
-}
-
-.login-form {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  height: 30vh;
-}
-
-.login, .pass {
-  padding: 30px 5px;
-  border: none;
-  font-size: 65px;
-  width: 75%;
-  outline: none;
-  border-bottom: 8px solid white;
-  background-color: black;
-  color: white;
-  outline-color: transparent;
-  outline-width: 0px;
-  font-family: 'Nova Square', sans-serif;
-}
-
-.login::placeholder, .pass::placeholder {
-  color: white;
-}
-
-.login-btn {
-  cursor: pointer;
-  width: auto;
-  font-size: 55px;
-  padding: 20px 60px;
-  border: 2px solid white;
-}
-
-.account-name, .failed-to-login{
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 40px;
-}
-
-.account-name {
-  color: rgb(102, 157, 102);
-}
-
-.failed-to-login {
-  color: rgb(135, 41, 41);
 }
