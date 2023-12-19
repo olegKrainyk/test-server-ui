@@ -11,6 +11,8 @@ export default function Profile(props){
         <div className='profile-full-name'>
             {props.user.fullName}
         </div>
+
+        <div className='profile-full-name'>{props.user.randomNum}</div>
         
     </div>
   );

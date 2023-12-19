@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css'
-import axios from 'axios'
 import Login from './Login/Login'
 import { Route, Routes } from 'react-router-dom'
 import Profile from './Profile/Profile'
