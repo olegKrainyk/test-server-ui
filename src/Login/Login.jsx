@@ -42,6 +42,7 @@ const loginHandleClick = () => {
                 props.setUser(response.data)
                 setLogin('')
                 setPassword('')
+                localStorage.setItem("user", JSON.stringify(response.data));
                 navigate('/profile');
               } else {
                 props.setUser({name: '', admin: false});

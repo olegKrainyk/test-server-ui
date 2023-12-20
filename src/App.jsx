@@ -6,7 +6,7 @@ import Profile from './Profile/Profile'
 
 export default function App(){
 
-  const [user, setUser] = useState({login: '', admin: false});
+  const [user, setUser] = useState(localStorage.getItem("user") !== null ? JSON.parse(localStorage.getItem("user")) : '');
 
   return (
     <div className="App">
