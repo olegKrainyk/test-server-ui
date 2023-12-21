@@ -6,6 +6,13 @@
     align-items: center;
 }
 
+.back-to-login {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 40px;
+}
+
 .profile-name {
 
 }

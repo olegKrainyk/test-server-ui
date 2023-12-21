@@ -1,3 +1,4 @@
+import axios from 'axios'
 import './Profile.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,13 +9,30 @@ export default function Profile(props){
 
   const handleLogOut = () => {
 
+    axios.get(`http://10.241.104.202:8080/log-out-session`, {params: {sessionid: props.user.sessionid, id: props.user.id}})
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+
     localStorage.setItem("user", '[{}]')
     props.setUser([{}]);
     navigate('/')
 
   }
 
+  const handleViewLogin = () => {
+    navigate('/')
+  }
+
   return (
+    <>
+    <div className='back-to-login icon' onClick={handleViewLogin}>
+      {'<-'}
+    </div>
+
     <div className="profile-block">
 
         <div className='profile-id profile-item'>
@@ -28,9 +46,10 @@ export default function Profile(props){
             {props.user.fullName}
         </div>
 
-        <div className='profile-random-number profile-item'>session id: {props.user.randomNum}</div>
+        <div className='profile-random-number profile-item'>session id: {props.user.sessionid}</div>
         
         <div className='profile-log-out' onClick={handleLogOut}>Log Out</div>
     </div>
+    </>
   );
 }

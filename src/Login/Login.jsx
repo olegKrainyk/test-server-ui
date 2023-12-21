@@ -23,6 +23,10 @@ const handleViewProfile = () => {
   navigate('/profile')
 }
 
+const handleViewLogin = () => {
+  navigate('/')
+}
+
 const checkConnection = () => {
   console.log('lox click');
 
@@ -39,13 +43,14 @@ const checkConnection = () => {
 const loginHandleClick = () => {
   if(login !== '' && password !== ''){
 
-    axios.get(`http://10.241.104.202:8080/login`, {params: {login: login, pass: password}})
+    axios.get(`http://10.241.104.202:8080/login`, {params: {login: login, pass: password, sessionid: props.user.sessionid}})
           .then(response => {
             console.log(response)
               if(response.data.login === login) {
                 props.setUser(response.data)
                 setLogin('')
                 setPassword('')
+                
                 localStorage.setItem("user", JSON.stringify(response.data));
                 navigate('/profile');
               } else {
@@ -61,25 +66,47 @@ const loginHandleClick = () => {
   return (
   
   <>
-  <div className='view-profile icon' onClick={handleViewProfile}>
-    profile
-  </div>
 
+  {(props.user.id !== undefined) ? (
+      <div className='view-profile icon' onClick={handleViewProfile}>
+        profile
+      </div>
+  ) : (<></>)}
+
+    {(props.user.id === undefined) ? (
+    
     <div className="login-block">
 
-      <div className='login-form'>
-        <input placeholder="Login" maxLength={20} type='email' value={login} onChange={handleLoginChange} className='login'></input>
-        <input placeholder="Password" maxLength={30} type='password' value={password} onChange={handlePasswordChange} className='pass'></input>
-        <div className='login-btn' onClick={loginHandleClick}>Log In</div>
-      </div>
+        <div className='login-form'>
+          <input placeholder="Login" maxLength={20} type='email' value={login} onChange={handleLoginChange} className='login'></input>
+          <input placeholder="Password" maxLength={30} type='password' value={password} onChange={handlePasswordChange} className='pass'></input>
+          <div className='login-btn' onClick={loginHandleClick}>Log In</div>
+        </div>
 
-      <div className='check-connection'>
-        <div className='get-info-btn' onClick={checkConnection}>check connection</div>
-        <div className='info-text'>{info}</div>
-      </div>
+        <div className='check-connection'>
+          <div className='get-info-btn' onClick={checkConnection}>check connection</div>
+          <div className='info-text'>{info}</div>
+        </div>
 
-      <div className={props.user.name !== '' ? 'account-name' : 'failed-to-login'}>{props.user.name !== '' ? '' : 'Authentication Failed'}</div> 
-    </div>
+        <div className={props.user.name !== '' ? 'account-name' : 'failed-to-login'}>{props.user.name !== '' ? '' : 'Authentication Failed'}</div> 
+        </div>
+  ) : (<div className="login-block">
+
+  <div className='login-form'>
+    <input placeholder="Login" maxLength={20} type='email' value={login} onChange={handleLoginChange} className='login'></input>
+    <input placeholder="Password" maxLength={30} type='password' value={password} onChange={handlePasswordChange} className='pass'></input>
+    <div className='login-btn' onClick={loginHandleClick}>Log In</div>
+  </div>
+
+  <div className='check-connection'>
+    <div className='get-info-btn' onClick={checkConnection}>check connection</div>
+    <div className='info-text'>{info}</div>
+  </div>
+
+  <div className={props.user.name !== '' ? 'account-name' : 'failed-to-login'}>{props.user.name !== '' ? '' : 'Authentication Failed'}</div> 
+  </div>)}
+
+    
     </>
   );
 }
