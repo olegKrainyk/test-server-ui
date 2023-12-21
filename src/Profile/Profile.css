@@ -21,3 +21,11 @@
 .profile-item {
     margin: 15px 0;
 }
+
+.profile-log-out {
+    cursor: pointer;
+    width: auto;
+    font-size: 55px;
+    padding: 20px 60px;
+    border: 2px solid white;
+}

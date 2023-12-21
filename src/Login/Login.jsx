@@ -12,14 +12,18 @@ const [login, setLogin] = useState('');
 const [password, setPassword] = useState('');
 
 const handleLoginChange = (e) => {
-  setLogin(e.target.value);
+  setLogin(e.target.value)
 }
 
 const handlePasswordChange = (e) => {
-  setPassword(e.target.value);
+  setPassword(e.target.value)
 }
 
-const handleClick = () => {
+const handleViewProfile = () => {
+  navigate('/profile')
+}
+
+const checkConnection = () => {
   console.log('lox click');
 
     axios.get(`http://10.241.104.202:8080/it-works`)
@@ -55,6 +59,12 @@ const loginHandleClick = () => {
 }
 
   return (
+  
+  <>
+  <div className='view-profile icon' onClick={handleViewProfile}>
+    profile
+  </div>
+
     <div className="login-block">
 
       <div className='login-form'>
@@ -64,11 +74,12 @@ const loginHandleClick = () => {
       </div>
 
       <div className='check-connection'>
-        <div className='get-info-btn' onClick={handleClick}>check connection</div>
+        <div className='get-info-btn' onClick={checkConnection}>check connection</div>
         <div className='info-text'>{info}</div>
       </div>
 
       <div className={props.user.name !== '' ? 'account-name' : 'failed-to-login'}>{props.user.name !== '' ? '' : 'Authentication Failed'}</div> 
     </div>
+    </>
   );
 }

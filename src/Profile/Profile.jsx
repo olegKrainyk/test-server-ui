@@ -1,6 +1,18 @@
 import './Profile.css'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Profile(props){
+
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+
+    localStorage.setItem("user", '[{}]')
+    props.setUser([{}]);
+    navigate('/')
+
+  }
 
   return (
     <div className="profile-block">
@@ -18,6 +30,7 @@ export default function Profile(props){
 
         <div className='profile-random-number profile-item'>session id: {props.user.randomNum}</div>
         
+        <div className='profile-log-out' onClick={handleLogOut}>Log Out</div>
     </div>
   );
 }

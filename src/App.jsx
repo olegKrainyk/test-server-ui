@@ -6,7 +6,7 @@ import Profile from './Profile/Profile'
 
 export default function App(){
 
-  const [user, setUser] = useState(localStorage.getItem("user") !== null ? JSON.parse(localStorage.getItem("user")) : '');
+  const [user, setUser] = useState(localStorage.getItem("user") !== null ? JSON.parse(localStorage.getItem("user")) : '[{}]');
 
   return (
     <div className="App">
@@ -14,7 +14,6 @@ export default function App(){
         <Route path='' element={<Login user={user} setUser={setUser} />} />
         <Route path='login' element={<Login user={user} setUser={setUser} />} />
         <Route path='profile' element={<Profile user={user} setUser={setUser} />} />
-
       </Routes>
       
     </div>
