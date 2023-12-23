@@ -8,18 +8,18 @@ export default function Profile(props){
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    axios.get(`http://10.241.104.202:8080/check-session`, {params: {sessionid: props.user.sessionid, id: props.user.id}})
-    .then(response => {
-        console.log(response.data.active);
-        if(response.data.active === false) {
-          handleLogOut();
-        }
-    })
-    .catch(error => {
-        console.error('There was an error!', error);
-    });
-  });
+  // useEffect(() => {
+  //   axios.get(`http://10.241.104.202:8080/check-session`, {params: {sessionid: props.user.sessionid, id: props.user.id}})
+  //   .then(response => {
+  //       console.log(response.data.active);
+  //       if(response.data.active === false) {
+  //         handleLogOut();
+  //       }
+  //   })
+  //   .catch(error => {
+  //       console.error('There was an error!', error);
+  //   });
+  // });
 
   const handleLogOut = () => {
 
